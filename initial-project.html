@@ -1,0 +1,54 @@
+<html><head>
+<title>þreader concept/project description</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width">
+</head><body>
+<h1>þreader concept/project description</h1>
+
+<address>Kevin Reid<br>
+September 2011</address>
+
+<p>þreader will be a web application focusing initially on taking <em>discussions on the web</em> (either via feeds (Atom, RSS) or screen-scraping) which have explicit or implicit thread structure, pulling them into a local store for fast access, and presenting a UI optimized for efficient, comfortable, <em>thread-aware</em> reading.
+
+<p>My personal goal is to “bring back the glory days of Usenet”, or rather my own experience of using a good, offline, threaded, NNTP client. þreader as initially implemented will not have any NNTP (or email) features, but that could come in the future.
+
+<h2>Student project info</h2>
+
+<p>I intend to use þreader as my project for the Fall 2011 courses MP451 Open Source Software and CS459 Human-Computer Interaction at Clarkson University.</p>
+
+<p>As this is an open-source project, <em>all</em> materials will be made public; where applicable, they will be reusable under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
+
+<h2>Core functionality</h2>
+
+<p>Fundamentally, þreader will be a feed reader. It will initially be a web application, in that the user interface runs in a web browser (mainly for portability).</p>
+
+<p>It will have an “unread flags” type user interface: every new post found in feeds is initially marked unread, then marked read once the user has viewed it. The user interface will present a single post, possibly in context, together with a graphical display of the thread structure involving that post.</p>
+
+<h2>Feature ideas / considerations</h2>
+
+<p>These are some simple ideas for the type of functionality which distinguishes þreader from other feed or threaded-discussion readers.</p>
+
+<ul>
+  <li>Recognize that time-ordering is important as well as threading. Support messages in multiple threads/replies to multiple messages.
+  <li>Infer thread structure from unthreaded content:
+    <ul>
+      <li>Interpret “conversations among blogs”: If a blog post links to another in the first paragraph, then it may be a reply.</li>
+      <li>In a single blog with categories/tags, the categories may constitute threads.</li>
+      <li>Support extracting threaded discussions from the HTML of sites which have threads but do not expose them in feeds, such as Reddit.</li>
+    </ul>
+  </li>
+  <li>Support following threads through automatic feed subscription:
+    <ul>
+      <li>In “conversations among blogs”, subscribe to replied-to feeds to get a wider view of the conversation.</li>
+      <li>When a blog's comments are of interest, subscribe to per-post comment feeds automatically, and consider that feed's entries to be replies to the post.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Implementation plans</h2>
+
+<p>The entire system will be written in JavaScript; I wish to provide for easy revision of decisions to place particular functionality on the client or server side.</p>
+
+<p>The server/back-end component will, unless I find reason to do otherwise, be built on the <a href="http://nodejs.org/">node.js</a> platform. The client component will be written in HTML and JavaScript and communicate with the server in the usual current AJAX/JSON/Comet rich webapp style.</p>
+
+</body>
